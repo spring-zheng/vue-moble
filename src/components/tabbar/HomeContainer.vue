@@ -81,13 +81,11 @@ export default {
 };
 </script>
 
-<style>
-body {
-    background-color: #fff;
-}
+<style scoped>
+
 .mint-swipe {
   height: 130px;
-}
+} 
 .mint-swipe img {
   width: 100%;
   height: 100%;

@@ -16,7 +16,7 @@ import { Header, Swipe, SwipeItem  } from 'mint-ui';
 Vue.component(Header.name, Header);
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
-import 'mint-ui/lib/style.css'
+// import 'mint-ui/lib/style.css'
 
 // 导入app.vue组件
 import app from './app.vue';
