@@ -7,7 +7,9 @@
 
       <!-- 中间，路由区域 -->
    
-		<router-view></router-view>
+		<transition>
+			<router-view></router-view>
+		</transition>
     
 
 
@@ -42,4 +44,22 @@
       padding-top: 40px;
       overflow-x: hidden;
     }
+	
+	.v-enter,
+	.v-leave-to {
+		opacity: 0;
+	}
+
+	.v-enter {
+		transform: translateX(100%)
+	}
+	.v-leave-to {
+		transform: translateX(-100%);
+		position: absolute;
+	}
+
+	.v-enter-active,
+	.v-leave-active {
+		transition: all .5s ease;
+	}
 </style>
