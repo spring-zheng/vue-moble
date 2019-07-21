@@ -41,7 +41,12 @@ module.exports = {
                 }
             },
             { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
-            {test: /\.vue$/, use: 'vue-loader'}
+            {test: /\.vue$/, use: 'vue-loader'},
+            // sass格式引入
+            // {
+            //     test: /\.scss$/,
+            //     use: ['style-loader', 'css-loader', 'sass-loader']
+            // },
         ]
     },
     // 使用render函数就不用配置这个了

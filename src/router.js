@@ -5,20 +5,24 @@ import ShopcarContainer from './components/tabbar/ShopcarContainer.vue';
 import SearchContainer from  './components/tabbar/SearchContainer.vue';
 import NewsList from './components/news/newsList.vue';
 import NewsInfo from './components/news/newsInfo.vue';
-import PhotoList from './components/photos/photoList.vue'
+import PhotoList from './components/photos/photoList.vue';
+import PhotoInfo from './components/photos/photosInfo.vue';
+import goodList from './components/goods/goodsList.vue';
 
 
 export default 
     new VueRouter({
         routes: [
             {path: '/', redirect: '/home'},
-            { path:'/home', component: HomeContainer},
+            {path:'/home', component: HomeContainer},
             {path: '/member', component: MemberContaier},
             {path: '/shopcar', component: ShopcarContainer},
             {path: '/search', component: SearchContainer},
             {path: '/home/newsList', component: NewsList},
             {path: '/home/newsInfo/:id', component: NewsInfo},
             {path: '/home/photoList', component: PhotoList},
+            {path: '/home/photoInfo/:id', component: PhotoInfo},
+            {path: '/home/goodList', component: goodList},
         ],
         linkActiveClass: 'mui-active'
     })

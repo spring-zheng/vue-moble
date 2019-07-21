@@ -14,7 +14,7 @@
 
 
     <!-- 底部 footer区域 -->
-    		<nav class="mui-bar mui-bar-tab">
+    	<nav class="mui-bar mui-bar-tab">
 			<router-link class="mui-tab-item-aa" to="/home">
 				<span class="mui-icon mui-icon-home"></span>
 				<span class="mui-tab-label">首页</span>
@@ -40,10 +40,14 @@
 
 </script>
 <style lang="css" scoped>
+	.mint-header {
+		z-index: 999;
+	}
     .app-container {
       padding-top: 40px;
 	  padding-bottom: 50px;
-      overflow-x: hidden;
+      overflow: hidden;
+	  height: 100%;
     }
 	
 	.v-enter,
@@ -63,7 +67,6 @@
 	.v-leave-active {
 		transition: all .5s ease;
 	}
-
 	.mui-bar-tab .mui-tab-item-aa {
 		display: table-cell;
   		overflow: hidden;
