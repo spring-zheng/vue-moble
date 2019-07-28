@@ -48,12 +48,12 @@
             // 缩略图
             getThumimgs() {
                 this.$http.get('api/getthumimages/' + this.id).then(res => {
-                    console.log(res)
+                    // console.log(res)
                     if(res.body.status == 0) {
                         res.body.message.forEach(img => {
                             img.msrc = img.src;
                             img.w = 400;//这是大图的宽
-                            img.h = 200;
+                            img.h = 400;
                         });
                         this.thumimgs = res.body.message;
                     }

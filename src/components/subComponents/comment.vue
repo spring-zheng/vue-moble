@@ -76,6 +76,9 @@
 </script>
 
 <style scoped>
+    .cmt-container {
+        padding: 0 10px;
+    }
     .cmt-container h3 {
         font-size: 16px;
         /* font-weight: normal; */
@@ -109,5 +112,8 @@
     }
     .mui-btn-blue, .mui-btn-primary, input {
         width: 100%;
+    }
+    .cmt-container .cmt-list {
+        margin: 0 15px;
     }
 </style>

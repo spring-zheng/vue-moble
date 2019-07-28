@@ -1,62 +1,64 @@
 <template>
   <div class="goods-list">
-    <div class="goods-item">
+    <div class="goods-item" v-for="item in goodsList" :key="item.id" @tap="getDetail(item.id)">
       <img
-        src="../../imsges/62cf191f88e41447.jpg"
+        :src="item.img_url"
         alt
       />
-      <h1 class="title">小米（Mi）小米Note 16G双网通版</h1>
+      <h1 class="title">{{item.title}}</h1>
       <div class="info">
         <p class="price">
-          <span class="now">￥899</span>
-          <span class="old">￥999</span>
+          <span class="now">￥{{item.sell_price}}</span>
+          <span class="old">￥{{item.market_price}}</span>
         </p>
         <p class="sell">
-          <span>热卖中</span>
-          <span>剩60件</span>
+          <span>热卖</span>
+          <span>剩{{item.stock_quantity}}件</span>
         </p>
       </div>
     </div>
-
-    <div class="goods-item">
-      <img
-        src="../../imsges/90dcc480334864fa.jpg"
-        alt
-      />
-      <h1 class="title">尼康(Nikon)D3300套机（18-55mm f/3.5-5.6G VRII）（黑色）</h1>
-      <div class="info">
-        <p class="price">
-          <span class="now">￥899</span>
-          <span class="old">￥999</span>
-        </p>
-        <p class="sell">
-          <span>热卖中</span>
-          <span>剩60件</span>
-        </p>
-      </div>
-    </div>
-
-    <div class="goods-item">
-      <img
-        src="../../imsges/62cf191f88e41447.jpg"
-        alt
-      />
-      <h1 class="title">小米（Mi）小米Note 16G双网通版</h1>
-      <div class="info">
-        <p class="price">
-          <span class="now">￥899</span>
-          <span class="old">￥999</span>
-        </p>
-        <p class="sell">
-          <span>热卖中</span>
-          <span>剩60件</span>
-        </p>
-      </div>
-    </div>
+   <mt-button type="danger" size="large" @click="getMore" v-show="flag = flag">加载更多</mt-button>
   </div>
 </template>
 
 <script>
+    import { toast } from 'mint-ui'
+    export default {
+      data() {
+        return {
+          pageIndex: 1,
+          goodsList: [],
+          flag : true
+        }
+      },
+      created() {
+        this.getGoodsList();
+      },
+      methods: {
+        getGoodsList() {
+          this.$http.get('api/getgoods?pageindex=' + this.pageIndex).then(res => {
+            // console.log(res);
+            if(res.body.status == 0) {
+              this.goodsList = this.goodsList.concat(res.body.message);
+            } else {
+              toast('加载失败~')
+            }
+            if(res.body.message.length < 10) {
+              this.flag = false;
+            }
+          }) 
+        }, 
+        getMore() {
+          this.pageIndex ++;
+          this.getGoodsList()
+        },
+        getDetail(id) {
+          // 1.0 从列表页的商品信息，跳转到对应的详情页
+          this.$router.push({ name: 'goodsInfo', params:{id: id}})
+        }
+      }
+    }
+
 </script>
 
 <style scoped>

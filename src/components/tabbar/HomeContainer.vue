@@ -1,10 +1,7 @@
 <template>
   <div class="app-content">
-    <mt-swipe :auto="4000">
-      <mt-swipe-item v-for="item in lbtList" :key="item.id">
-        <img :src="item.img" alt />
-      </mt-swipe-item>
-    </mt-swipe>
+    <!-- 轮播图 -->
+    <swiper :swipertList="lunbotuList" :isfull="true"></swiper>
     <!-- 六宫格 -->
     <div class="mui-content">
       <ul class="mui-table-view mui-grid-view mui-grid-9">
@@ -21,7 +18,7 @@
           </router-link>
         </li>
         <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-          <router-link to="/home/goodList">
+          <router-link to="/home/goodsList">
             <img src="../../imsges/menu3.png" alt />
             <div class="mui-media-body">商品购买</div>
           </router-link>
@@ -51,11 +48,13 @@
 
 <script>
 import { Toast } from "mint-ui";
+// 引入轮播图组件
+import swiper from "../subComponents/swiper.vue";
 
 export default {
   data() {
     return {
-      lbtList: []
+      lunbotuList: []
     };
   },
   created() {
@@ -64,11 +63,11 @@ export default {
   methods: {
     getLBT() {
       this.$http
-        .get("http://www.liulongbin.top:3005/api/getlunbo")
+        .get("api/getlunbo")
         .then(result => {
           // console.log(result);
           if (result.body.status === 0) {
-            this.lbtList = result.body.message;
+            this.lunbotuList = result.body.message;
             // Toast("图片加载成功~");
           } else {
             {
@@ -77,19 +76,14 @@ export default {
           }
         });
     }
+  },
+  components: {
+    swiper
   }
 };
 </script>
 
 <style scoped>
-
-.mint-swipe {
-  height: 130px;
-} 
-.mint-swipe img {
-  width: 100%;
-  height: 100%;
-}
 .mui-content > .mui-table-view:first-child {
   margin: 0;
 }
@@ -102,8 +96,8 @@ export default {
 }
 
 .mui-grid-view.mui-grid-9 .mui-table-view-cell {
-    border: 0;
-    padding: 0;
+  border: 0;
+  padding: 0;
 }
 .mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body {
   font-size: 13px;

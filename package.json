@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dev-server --open --port 3001 --contentBase src --hot --host 192.168.15.35"
+    "dev": "webpack-dev-server --open --port 3001 --contentBase src --hot"
   },
   "keywords": [],
   "author": "",
@@ -36,7 +36,8 @@
     "jquery": "^3.4.1",
     "mint-ui": "^2.2.13",
     "moment": "^2.24.0",
-    "vue-resource": "^1.5.1"
+    "vue-resource": "^1.5.1",
+    "vuex": "^3.1.1"
   },
   "description": ""
 }
